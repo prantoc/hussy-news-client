@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { FaPlus, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
@@ -20,8 +21,8 @@ const Header = () => {
                                 <LeftSideNav></LeftSideNav>
                             </div>
                             <Navbar.Text>
-                                <Button className='me-2' variant="danger">Advertise</Button>
-                                <Button variant="outline-dark">hu</Button>
+                                <Button className='me-2' variant="danger"><FaPlus /> Advertise</Button>
+                                <Button variant="outline-dark"><FaUser /></Button>
                             </Navbar.Text>
                         </Nav>
                     </Navbar.Collapse>

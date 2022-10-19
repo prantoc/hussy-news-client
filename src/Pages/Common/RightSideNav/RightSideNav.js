@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaGoogle, FaFacebook, FaYoutube, FaTwitter, FaWhatsapp, FaDiscord, FaTwitch } from 'react-icons/fa';
+import { FaGithub, FaGoogle, FaFacebook, FaYoutube, FaTwitter, FaWhatsapp, FaDiscord, FaTwitch, FaFileWord } from 'react-icons/fa';
 import Slider from '../Slider/Slider';
 const RightSideNav = () => {
     return (
@@ -14,7 +14,7 @@ const RightSideNav = () => {
                 <span>Find us on:</span>
 
                 {
-                    [{ name: "facebook", icon: <FaFacebook /> }, { name: "YouTube", icon: <FaYoutube /> }, { name: "Twitter", icon: <FaTwitter /> }, { name: "WhatsApp", icon: <FaWhatsapp /> }, { name: "Discord", icon: <FaDiscord /> }, { name: "Privacy Policy", icon: <FaTwitch /> }, { name: "Terms & Conditions", icon: 'FaFacebook' }].map((social, i) =>
+                    [{ name: "facebook", icon: <FaFacebook /> }, { name: "YouTube", icon: <FaYoutube /> }, { name: "Twitter", icon: <FaTwitter /> }, { name: "WhatsApp", icon: <FaWhatsapp /> }, { name: "Discord", icon: <FaDiscord /> }, { name: "Privacy Policy", icon: <FaTwitch /> }, { name: "Terms & Conditions", icon: <FaFileWord /> }].map((social, i) =>
                         <Link key={i} to="facebook" className={`shadow-sm p-2 border border-1 mb-1 bg-body d-block nav-link rounded-${i === 0 ? 'top' : i === 6 ? "bottom" : ""}`}>{social.icon} {social.name}</Link>
                     )
                 }
