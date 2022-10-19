@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
 const LeftSideNav = () => {
@@ -10,12 +11,17 @@ const LeftSideNav = () => {
             .catch(err => console.log(err))
     }, [])
     return (
-        <div>
+        <>
             <h4>All Category {categories.length}</h4>
             <div>
-                {categories.map(cat => <p key={cat.id}><Link to={`/category/${cat.id}`}>{cat.name}</Link></p>)}
+                {categories.map(cat =>
+                    <p key={cat.id}>
+                        <LinkContainer to={`/category/${cat.id}`}>
+                            <Link>{cat.name}</Link>
+                        </LinkContainer>
+                    </p>)}
             </div>
-        </div>
+        </>
     );
 };
 
