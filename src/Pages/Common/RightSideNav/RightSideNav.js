@@ -8,7 +8,7 @@ const RightSideNav = () => {
         <>
             <div>
                 <Button variant="outline-primary" className='d-block col-12 my-2 rounded-bottom'> <FaGoogle /> Login via Google</Button>
-                <Button variant="outline-dark" className='d-block col-12 rounded-bottom'><FaGithub />Login via Github</Button>
+                <Button variant="outline-dark" className='d-block col-12 rounded-bottom'><FaGithub /> Login via Github</Button>
             </div>
             <div className='mt-3'>
                 <span>Find us on:</span>
