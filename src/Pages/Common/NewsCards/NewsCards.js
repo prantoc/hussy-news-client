@@ -12,8 +12,8 @@ const NewsCards = ({ news }) => {
                     <div className='d-flex'>
                         <Image roundedCircle style={{ height: '56px' }} src={author.img} />
                         <div className='ms-3'>
-                            <span className='fw-bold d-block'>{author.name}</span>
-                            <span className='text-secondary'>{author.published_date}</span>
+                            <span className='fw-bold d-block'>{author.name ? author.name : "author"}</span>
+                            <span className='text-secondary'>{author.published_date ? author.published_date : 'no-data'}</span>
                         </div>
 
                     </div>
@@ -22,16 +22,17 @@ const NewsCards = ({ news }) => {
                         <FaShareAlt className='ms-2' />
                     </div>
                 </Card.Header>
-
                 <Card.Body>
-                    <h4 className='text-center p-2'>{title}</h4>
+                    <h4 className='text-center p-2'>
+                        {title}
+                    </h4>
                     <Card.Img variant="top" src={image_url} />
                     <Card.Text className='mt-2 text-secondary'>
                         {
                             details.length > 250 ?
                                 <>
                                     {details.slice(0, 250) + '... '}
-                                    <Link className='text-primary' to={`/news/${_id}`}>Read More</Link>
+                                    <Link to={`/news/${_id}`}>Read More</Link>
                                 </>
                                 :
                                 <>
