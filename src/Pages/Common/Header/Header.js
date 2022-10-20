@@ -35,25 +35,25 @@ const Header = () => {
                     </Navbar.Collapse>
                     <Navbar.Text className='d-flex mx-auto'>
                         <Button className='me-2' variant="danger"><FaPlus /> Advertise</Button>
-                        <Dropdown>
-                            <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
-                                {
-                                    user
-                                        ?
-                                        <Image roundedCircle style={{ height: '28px' }} src={user?.photoURL} />
-                                        :
-                                        <FaUser />
-                                }
-                            </Dropdown.Toggle>
-                            {
-                                user
-                                &&
+                        {
+                            user
+                            &&
+                            <Dropdown>
+                                <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+                                    {
+                                        user
+                                            ?
+                                            <Image roundedCircle style={{ height: '28px' }} src={user?.photoURL} />
+                                            :
+                                            <FaUser />
+                                    }
+                                </Dropdown.Toggle>
                                 <Dropdown.Menu className='position-absolute end-100 translate-middle-x'>
                                     <Dropdown.Item >{user?.displayName}</Dropdown.Item>
                                     <Dropdown.Item onClick={userLogout}>Logout</Dropdown.Item>
                                 </Dropdown.Menu>
-                            }
-                        </Dropdown>
+                            </Dropdown>
+                        }
                     </Navbar.Text>
 
 

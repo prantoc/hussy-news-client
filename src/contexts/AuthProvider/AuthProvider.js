@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
 
     //signin with google
     const signInByGoogle = () => {
