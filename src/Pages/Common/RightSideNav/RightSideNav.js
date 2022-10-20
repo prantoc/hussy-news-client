@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle, FaFacebook, FaYoutube, FaTwitter, FaWhatsapp, FaDiscord, FaTwitch, FaFileWord } from 'react-icons/fa';
 import Slider from '../Slider/Slider';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 const RightSideNav = () => {
+    const { signInByGoogle } = useContext(AuthContext);
+    const googleSignIn = () => {
+        signInByGoogle()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            }).catch((error) => {
+                // Handle Errors here.
+                // const errorCode = error.code;
+                // const errorMessage = error.message;
+                // // The email of the user's account used.
+                // const email = error.customData.email;
+                // // The AuthCredential type that was used.
+                // const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+                console.log(error);
+            });
+    }
     return (
         <>
             <div>
-                <Button variant="outline-primary" className='d-block col-12 my-2 rounded-bottom'> <FaGoogle /> Login via Google</Button>
+                <Button onClick={googleSignIn} variant="outline-primary" className='d-block col-12 my-2 rounded-bottom'> <FaGoogle /> Login via Google</Button>
                 <Button variant="outline-dark" className='d-block col-12 rounded-bottom'><FaGithub /> Login via Github</Button>
             </div>
             <div className='mt-3'>

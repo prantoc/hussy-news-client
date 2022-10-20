@@ -1,11 +1,21 @@
-import React from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
 import { FaPlus, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
+    const { user, logoutUser } = useContext(AuthContext);
+    const userLogout = () => {
+        logoutUser()
+            .then(() => {
+                console.log(' Sign-out successful');
+            }).catch((error) => {
+                console.error(error);
+            });
+    }
     return (
         <Container fluid className='shadow p-2 mb-5 bg-body rounded'>
             <Navbar bg="light" expand="lg">
@@ -20,12 +30,31 @@ const Header = () => {
                             <div to="/" className='d-lg-none d-block'>
                                 <LeftSideNav></LeftSideNav>
                             </div>
-                            <Navbar.Text>
-                                <Button className='me-2' variant="danger"><FaPlus /> Advertise</Button>
-                                <Button variant="outline-dark"><FaUser /></Button>
-                            </Navbar.Text>
+
                         </Nav>
                     </Navbar.Collapse>
+                    <Navbar.Text className='d-flex mx-auto'>
+                        <Button className='me-2' variant="danger"><FaPlus /> Advertise</Button>
+                        <Dropdown>
+                            <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+                                {
+                                    user
+                                        ?
+                                        <Image roundedCircle style={{ height: '28px' }} src={user?.photoURL} />
+                                        :
+                                        <FaUser />
+                                }
+                            </Dropdown.Toggle>
+                            {
+                                user
+                                &&
+                                <Dropdown.Menu className='position-absolute end-100 translate-middle-x'>
+                                    <Dropdown.Item >{user?.displayName}</Dropdown.Item>
+                                    <Dropdown.Item onClick={userLogout}>Logout</Dropdown.Item>
+                                </Dropdown.Menu>
+                            }
+                        </Dropdown>
+                    </Navbar.Text>
 
 
                 </Container>
