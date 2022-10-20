@@ -7,11 +7,14 @@ const Home = () => {
     return (
         <>
             {
-                allNews.map(news =>
-                    <NewsCards key={news._id} news={news}></NewsCards>
-                )
-            }
+                allNews.length > 0 ?
+                    allNews.map(news =>
+                        <NewsCards key={news._id} news={news}></NewsCards>
+                    )
 
+                    :
+                    <p className='btn btn-danger col-12 text-center'>Data Not Found</p>
+            }
         </>
     );
 };
