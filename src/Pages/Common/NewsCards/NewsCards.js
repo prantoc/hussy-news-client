@@ -1,30 +1,30 @@
 import React from 'react';
-import { Card, Col, Image, Row } from 'react-bootstrap';
-import { FaShareAlt } from "react-icons/fa";
+import { Card, Image, } from 'react-bootstrap';
+import { FaRegBookmark, FaShareAlt, FaRegEye, FaStar } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 const NewsCards = ({ news }) => {
-    const { _id, author, title, image_url, details } = news;
+    const { _id, author, title, image_url, details, total_view, rating } = news;
     return (
         <>
-            <Card className='mb-5 p-2 shadow border-0 bg-body rounded'>
-                <Row className='border-bottom py-2'>
-                    <Col md="7" className='d-flex'>
-                        <div>
-                            <Image roundedCircle style={{ height: '56px' }} src={author.img} />
-                        </div>
+
+            <Card className='mb-5 shadow border-0 bg-body rounded'>
+                <Card.Header className='bg-light d-flex justify-content-between align-items-center'>
+                    <div className='d-flex'>
+                        <Image roundedCircle style={{ height: '56px' }} src={author.img} />
                         <div className='ms-3'>
                             <span className='fw-bold d-block'>{author.name}</span>
                             <span className='text-secondary'>{author.published_date}</span>
                         </div>
 
-                    </Col>
-                    <Col md="5" className="text-end">
-                        <FaShareAlt />
+                    </div>
+                    <div className="text-muted">
+                        <FaRegBookmark />
                         <FaShareAlt className='ms-2' />
-                    </Col>
-                </Row>
-                <h4 className='text-center mt-4'>{title}</h4>
+                    </div>
+                </Card.Header>
+
                 <Card.Body>
+                    <h4 className='text-center p-2'>{title}</h4>
                     <Card.Img variant="top" src={image_url} />
                     <Card.Text className='mt-2 text-secondary'>
                         {
@@ -40,16 +40,18 @@ const NewsCards = ({ news }) => {
                         }
                     </Card.Text>
                 </Card.Body>
-                <hr />
-                <Row>
-                    <Col col={6}>
-                        <Image fluid roundedCircle style={{ height: '56px' }} src={author.img} />
-                        <span className='ms-2'>{news.author.name}</span>
-                    </Col>
-                    <Col col={6}>
-                    </Col>
-                </Row>
+                <Card.Footer className="text-muted d-flex justify-content-between align-items-center bg-light">
+                    <div>
+                        <FaStar className='text-warning me-1' />
+                        <small>{rating.number}</small>
+                    </div>
+                    <div>
+                        <FaRegEye className='me-1' />
+                        {total_view}
+                    </div>
+                </Card.Footer>
             </Card>
+
 
         </>
     );
