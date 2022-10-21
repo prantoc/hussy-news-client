@@ -9,8 +9,8 @@ const Login = () => {
     const [errorMgs, setErrorMgs] = useState('');
     const navigate = useNavigate();
     let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const userLogin = e => {
-        let from = location.state?.from?.pathname || "/";
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
