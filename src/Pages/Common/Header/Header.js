@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Dropdown, Form, Image, Nav, Navbar } from 'react-bootstrap';
 import { FaPlus, FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
@@ -32,6 +32,14 @@ const Header = () => {
                             </div>
 
                         </Nav>
+                        <Form className="d-flex">
+                            <Form.Control
+                                type="search"
+                                placeholder="Search"
+                                className="me-2"
+                                aria-label="Search"
+                            />
+                        </Form>
                     </Navbar.Collapse>
                     {
                         user
