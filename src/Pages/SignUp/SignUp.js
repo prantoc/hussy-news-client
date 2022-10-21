@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { emailSent, success } from '../../Toasts/Toasts';
 
 const SignUp = () => {
     const { emPasSignUp, updateUserData, userEmailVerify, logoutUser } = useContext(AuthContext);
@@ -29,10 +30,11 @@ const SignUp = () => {
         }
         emPasSignUp(email, password)
             .then(() => {
-                updateUserData(name, photo).then(() => { }).catch(e => setErrorMgs(e.message))
-                userEmailVerify().then(() => { }).catch(e => setErrorMgs(e.message))
+                updateUserData(name, photo)
+                userEmailVerify()
                 setErrorMgs('');
-                setSuccessMgs('successfully created account and Email verification link sent please check!');
+                emailSent('Email verification link sent please check!');
+                success('successfully created an account')
                 logoutUser();
                 form.reset();
             })
