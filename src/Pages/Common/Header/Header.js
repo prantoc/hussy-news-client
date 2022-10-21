@@ -67,8 +67,6 @@ const Header = () => {
 
                             </Nav>
                     }
-
-
                 </Container>
             </Navbar>
         </Container>
