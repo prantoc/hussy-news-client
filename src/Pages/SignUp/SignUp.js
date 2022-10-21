@@ -30,7 +30,7 @@ const SignUp = () => {
         emPasSignUp(email, password)
             .then(() => {
                 updateUserData(name, photo).then(() => { }).catch(e => setErrorMgs(e.message))
-                userEmailVerify()
+                userEmailVerify().then(() => { }).catch(e => setErrorMgs(e.message))
                 setErrorMgs('');
                 setSuccessMgs('successfully created account and Email verification link sent please check!');
                 logoutUser();
