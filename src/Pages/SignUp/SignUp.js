@@ -1,41 +1,82 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
+    const { emPasSignUp, updateUserData, userEmailVerify, logoutUser } = useContext(AuthContext);
+    const [successMgs, setSuccessMgs] = useState('');
+    const [errorMgs, setErrorMgs] = useState('');
+    const userSignup = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
+
+        const isValidEmail = /\S+@\S+\.\S+/;
+        if (!isValidEmail.test(email)) {
+            return setErrorMgs('Please Provide a Valid Email Address')
+        }
+        if (password.length < 6) {
+            return setErrorMgs("Your password should be at least 6 charachters!");
+        }
+        if (password !== confirmPassword) {
+            return setErrorMgs("password and confirm password doesn't match!");
+        }
+        emPasSignUp(email, password)
+            .then(() => {
+                updateUserData(name, photo)
+                userEmailVerify()
+                setSuccessMgs('successfully created account and Email verification link sent please check!');
+                logoutUser();
+                form.reset();
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setErrorMgs(errorMessage);
+            });
+
+    }
     return (
         <>
-            <section className='container my-5'>
-                <div className="row">
-                    <div className='col-lg-8 col-11 mx-auto border p-5 rounded' style={{ boxShadow: "rgb(204 225 255) -7px 13px 4px 1px" }}>
-                        <form>
-                            <h1 className='text-center pb-4'>SignUp</h1>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputEmail" className="form-label">Full name</label>
-                                <input type="text" className="form-control" id="exampleInputEmail" aria-describedby="emailHelp" name='name' required placeholder='Enter your full name' />
-
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email' required placeholder='Enter your email ' />
-
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword1" name='password' required placeholder='Enter your password' />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword2" className="form-label">Confirm Password</label>
-                                <input type="password" className="form-control" id="exampleInputPassword2" name='confirmPassword' required placeholder='Enter your confir passowrd' />
-
-                            </div>
-                            <button type="submit" className="btn btn-primary text-center col-12  rounded">
-                                SignUp
-                            </button>
-                        </form>
-                        <div className="form-text text-center p-1">Have an account in Hussy-Portal? <Link to="/login">Login</Link></div>
+            <div className='col-lg-8 col-11 mx-auto border p-5 rounded' style={{ boxShadow: "rgb(204 225 255) -7px 13px 4px 1px" }}>
+                <form onSubmit={userSignup}>
+                    <h1 className='text-center pb-4'>SignUp</h1>
+                    {successMgs && <Alert variant="success">
+                        {successMgs}
+                    </Alert>}
+                    {errorMgs && <Alert variant="danger">
+                        {errorMgs}
+                    </Alert>}
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputName" className="form-label">Full name</label>
+                        <input type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp" name='name' required placeholder='Enter your full name' />
                     </div>
-                </div>
-            </section>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputPhoto" className="form-label">Photo URL</label>
+                        <input type="text" className="form-control" id="exampleInputPhoto" aria-describedby="photohelp" name='photo' required placeholder='Enter your photo URL' />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
+                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email' required placeholder='Enter your email ' />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                        <input type="password" className="form-control" id="exampleInputPassword1" name='password' required placeholder='Enter your password' />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputPassword2" className="form-label">Confirm Password</label>
+                        <input type="password" className="form-control" id="exampleInputPassword2" name='confirmPassword' required placeholder='Enter your confir passowrd' />
+                    </div>
+                    <button type="submit" className="btn btn-primary text-center col-12  rounded">
+                        SignUp
+                    </button>
+                </form>
+                <div className="form-text text-center p-1">Have an account in Hussy-Portal? <Link to="/login">Login</Link></div>
+            </div>
         </>
     );
 };
