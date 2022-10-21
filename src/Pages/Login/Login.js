@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { userSignIn } = useContext(AuthContext);
     const [successMgs, setSuccessMgs] = useState('');
     const [errorMgs, setErrorMgs] = useState('');
+    const navigate = useNavigate();
     const userLogin = e => {
         e.preventDefault();
         const form = e.target;
@@ -18,6 +19,7 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(user);
                 setSuccessMgs(`Hi, You Logged in successfully ${user.displayName}`);
+                navigate('/')
             })
             .catch((error) => {
                 const errorMessage = error.message;
