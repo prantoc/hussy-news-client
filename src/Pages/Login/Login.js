@@ -48,6 +48,7 @@ const Login = () => {
                     <div className="mb-4">
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword1" name="password" required />
+                        <label className="form-check-label" htmlFor="exampleCheck1"><Link to="/reset-password">Forgot Password?</Link></label>
                     </div>
                     <button type="submit" className="btn btn-primary text-center col-12  rounded">
                         Login
