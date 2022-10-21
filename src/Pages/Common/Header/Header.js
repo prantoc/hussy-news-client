@@ -33,28 +33,40 @@ const Header = () => {
 
                         </Nav>
                     </Navbar.Collapse>
-                    <Navbar.Text className='d-flex mx-auto'>
-                        <Button className='me-2' variant="danger"><FaPlus /> Advertise</Button>
-                        {
-                            user
-                            &&
-                            <Dropdown>
-                                <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
-                                    {
-                                        user
-                                            ?
-                                            <Image roundedCircle style={{ height: '28px' }} src={user?.photoURL} />
-                                            :
-                                            <FaUser />
-                                    }
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu className='position-absolute end-100 translate-middle-x'>
-                                    <Dropdown.Item >{user?.displayName}</Dropdown.Item>
-                                    <Dropdown.Item onClick={userLogout}>Logout</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        }
-                    </Navbar.Text>
+                    {
+                        user
+                            ?
+                            <Navbar.Text className='d-flex mx-auto'>
+                                <Button className='me-2' variant="danger"><FaPlus /> Advertise</Button>
+
+                                <Dropdown>
+                                    <Dropdown.Toggle className='border border-1' variant="outline-light" id="dropdown-basic">
+                                        {
+                                            user
+                                                ?
+                                                <Image roundedCircle style={{ height: '28px' }} src={user?.photoURL} />
+                                                :
+                                                <FaUser />
+                                        }
+                                    </Dropdown.Toggle>
+                                    <Dropdown.Menu className='position-absolute end-100 translate-middle-x'>
+                                        <Dropdown.Item >{user?.displayName}</Dropdown.Item>
+                                        <Dropdown.Item onClick={userLogout}>Logout</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Navbar.Text>
+
+                            :
+                            <Nav>
+                                <LinkContainer to="/login" >
+                                    <Link className="nav-link">Login</Link>
+                                </LinkContainer>
+                                <LinkContainer to="/signup" >
+                                    <Link className="nav-link">SignUp</Link>
+                                </LinkContainer>
+
+                            </Nav>
+                    }
 
 
                 </Container>
