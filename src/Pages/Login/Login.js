@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -8,7 +8,9 @@ const Login = () => {
     const [successMgs, setSuccessMgs] = useState('');
     const [errorMgs, setErrorMgs] = useState('');
     const navigate = useNavigate();
+    let location = useLocation();
     const userLogin = e => {
+        let from = location.state?.from?.pathname || "/";
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
@@ -18,8 +20,10 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user);
+                setErrorMgs('');
                 setSuccessMgs(`Hi, You Logged in successfully ${user.displayName}`);
-                navigate('/')
+                form.reset();
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorMessage = error.message;
