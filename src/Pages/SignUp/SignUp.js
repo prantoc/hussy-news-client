@@ -6,7 +6,7 @@ import { emailSent, success } from '../../Toasts/Toasts';
 
 const SignUp = () => {
     const { emPasSignUp, updateUserData, userEmailVerify, logoutUser } = useContext(AuthContext);
-    const [successMgs, setSuccessMgs] = useState('');
+    // const [successMgs, setSuccessMgs] = useState('');
     const [errorMgs, setErrorMgs] = useState('');
     const [accepted, setAccepted] = useState(false);
     const userSignup = e => {
@@ -53,9 +53,9 @@ const SignUp = () => {
             <div className='col-lg-8 col-11 mx-auto border p-5 rounded' style={{ boxShadow: "rgb(204 225 255) -7px 13px 4px 1px" }}>
                 <form onSubmit={userSignup}>
                     <h1 className='text-center pb-4'>SignUp</h1>
-                    {successMgs && <Alert variant="success">
+                    {/* {successMgs && <Alert variant="success">
                         {successMgs}
-                    </Alert>}
+                    </Alert>} */}
                     {errorMgs && <Alert variant="danger">
                         {errorMgs}
                     </Alert>}

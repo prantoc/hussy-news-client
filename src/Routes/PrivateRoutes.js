@@ -12,7 +12,10 @@ const PrivateRoutes = ({ children }) => {
         </Spinner>
     }
     if (user) {
-        return children;
+        if (user.emailVerified) {
+            return children;
+        }
+        return <Navigate to="/verify-email" state={{ from: location }} replace></Navigate>;
     }
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };

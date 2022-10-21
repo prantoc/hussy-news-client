@@ -69,6 +69,7 @@ const AuthProvider = ({ children }) => {
         userEmailVerify,
         userSignIn,
         userPassReset,
+        setLoading,
         loading
     }
 

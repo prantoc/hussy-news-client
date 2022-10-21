@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import News from "../Pages/News/News";
 import ResetPassword from "../Pages/ResetPassowrd/ResetPassword";
 import SignUp from "../Pages/SignUp/SignUp";
+import VerifyEmail from "../Pages/VerifyEmail/VerifyEmail";
 import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: "/reset-password",
                 element: <ResetPassword></ResetPassword>
+            },
+            {
+                path: "/verify-email",
+                element: <VerifyEmail></VerifyEmail>
             },
         ]
     },

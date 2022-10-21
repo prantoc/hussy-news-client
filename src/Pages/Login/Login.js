@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { userSignIn } = useContext(AuthContext);
+    const { userSignIn, setLoading } = useContext(AuthContext);
     const [successMgs, setSuccessMgs] = useState('');
     const [errorMgs, setErrorMgs] = useState('');
     const navigate = useNavigate();
@@ -28,7 +28,10 @@ const Login = () => {
             .catch((error) => {
                 const errorMessage = error.message;
                 setErrorMgs(errorMessage);
-            });
+            })
+            .finally(() => {
+                setLoading(false)
+            })
     }
     return (
         <>
