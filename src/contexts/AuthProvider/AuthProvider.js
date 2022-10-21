@@ -60,7 +60,17 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     //passing all of the variable and functions 
-    const authInfo = { user, signInByGoogle, logoutUser, emPasSignUp, updateUserData, userEmailVerify, userSignIn, userPassReset, loading }
+    const authInfo = {
+        user,
+        signInByGoogle,
+        logoutUser,
+        emPasSignUp,
+        updateUserData,
+        userEmailVerify,
+        userSignIn,
+        userPassReset,
+        loading
+    }
 
     return (
         <AuthContext.Provider value={authInfo}>
