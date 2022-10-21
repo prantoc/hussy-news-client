@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle, FaFacebook, FaYoutube, FaTwitter, FaWhatsapp, FaDiscord, FaTwitch, FaFileWord } from 'react-icons/fa';
 import Slider from '../Slider/Slider';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 const RightSideNav = () => {
     const { signInByGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
     const googleSignIn = () => {
         signInByGoogle()
             .then((result) => {
                 const user = result.user;
                 console.log(user);
+                navigate('/')
             }).catch((error) => {
                 // Handle Errors here.
                 // const errorCode = error.code;
