@@ -10,20 +10,24 @@ const AuthProvider = ({ children }) => {
 
     //signin with google
     const signInByGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, provider)
     }
     //signin with email and password 
     const userSignIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     //signup with email password 
     const emPasSignUp = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     //update user data after signup
     const updateUserData = (name, photo) => {
+        setLoading(true)
         updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
@@ -31,11 +35,13 @@ const AuthProvider = ({ children }) => {
 
     //Send email verfication to register user
     const userEmailVerify = () => {
+        setLoading(true)
         return sendEmailVerification(auth.currentUser)
     }
 
     //signout user
     const logoutUser = () => {
+        setLoading(true)
         return signOut(auth);
     }
     //get current user data
