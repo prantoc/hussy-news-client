@@ -6,6 +6,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     //signin with google
     const signInByGoogle = () => {
@@ -40,13 +41,14 @@ const AuthProvider = ({ children }) => {
     //get current user data
     useEffect(() => {
         const un = onAuthStateChanged(auth, (cUser) => {
+            setLoading(false)
             setUser(cUser);
         });
         return () => un();
     }, [])
 
     //passing all of the variable and functions 
-    const authInfo = { user, signInByGoogle, logoutUser, emPasSignUp, updateUserData, userEmailVerify, userSignIn }
+    const authInfo = { user, signInByGoogle, logoutUser, emPasSignUp, updateUserData, userEmailVerify, userSignIn, loading }
 
     return (
         <AuthContext.Provider value={authInfo}>
