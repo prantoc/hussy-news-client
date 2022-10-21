@@ -30,6 +30,7 @@ const SignUp = () => {
             .then(() => {
                 updateUserData(name, photo)
                 userEmailVerify()
+                setErrorMgs('');
                 setSuccessMgs('successfully created account and Email verification link sent please check!');
                 logoutUser();
                 form.reset();
@@ -38,8 +39,8 @@ const SignUp = () => {
                 const errorMessage = error.message;
                 setErrorMgs(errorMessage);
             });
-
     }
+
     return (
         <>
             <div className='col-lg-8 col-11 mx-auto border p-5 rounded' style={{ boxShadow: "rgb(204 225 255) -7px 13px 4px 1px" }}>
