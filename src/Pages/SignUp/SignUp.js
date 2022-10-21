@@ -7,6 +7,7 @@ const SignUp = () => {
     const { emPasSignUp, updateUserData, userEmailVerify, logoutUser } = useContext(AuthContext);
     const [successMgs, setSuccessMgs] = useState('');
     const [errorMgs, setErrorMgs] = useState('');
+    const [accepted, setAccepted] = useState(false);
     const userSignup = e => {
         e.preventDefault();
         const form = e.target;
@@ -41,6 +42,10 @@ const SignUp = () => {
             });
     }
 
+    const handleAccepted = e => {
+        setAccepted(e.target.checked);
+    }
+
     return (
         <>
             <div className='col-lg-8 col-11 mx-auto border p-5 rounded' style={{ boxShadow: "rgb(204 225 255) -7px 13px 4px 1px" }}>
@@ -72,7 +77,11 @@ const SignUp = () => {
                         <label htmlFor="exampleInputPassword2" className="form-label">Confirm Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword2" name='confirmPassword' required placeholder='Enter your confir passowrd' />
                     </div>
-                    <button type="submit" className="btn btn-primary text-center col-12  rounded">
+                    <div className="mb-3 form-check" onClick={handleAccepted}>
+                        <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                        <label className="form-check-label" htmlFor="exampleCheck1">Accept Our Terms & Conditions</label>
+                    </div>
+                    <button disabled={!accepted} type="submit" className="btn btn-primary text-center col-12  rounded">
                         SignUp
                     </button>
                 </form>
