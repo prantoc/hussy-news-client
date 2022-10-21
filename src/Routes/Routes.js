@@ -2,11 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Category from "../Pages/Category/Category";
 import Home from "../Pages/Home/Home";
-import Login from "../Pages/Login/Login";
+import Login from "../Pages/Auth/Login/Login";
 import News from "../Pages/News/News";
-import ResetPassword from "../Pages/ResetPassowrd/ResetPassword";
-import SignUp from "../Pages/SignUp/SignUp";
-import VerifyEmail from "../Pages/VerifyEmail/VerifyEmail";
+import ResetPassword from "../Pages/Auth/ResetPassowrd/ResetPassword";
+import SignUp from "../Pages/Auth/SignUp/SignUp";
+import VerifyEmail from "../Pages/Auth/VerifyEmail/VerifyEmail";
 import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([

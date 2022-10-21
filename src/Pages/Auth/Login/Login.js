@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { userSignIn, setLoading } = useContext(AuthContext);

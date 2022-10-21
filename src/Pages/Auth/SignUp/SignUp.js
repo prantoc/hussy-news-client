@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { emailSent, success } from '../../Toasts/Toasts';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { emailSent, success } from '../../../Toasts/Toasts';
 
 const SignUp = () => {
     const { emPasSignUp, updateUserData, userEmailVerify, logoutUser } = useContext(AuthContext);

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { emailSent } from '../../Toasts/Toasts';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { emailSent } from '../../../Toasts/Toasts';
 
 const VerifyEmail = () => {
     const { userEmailVerify, user } = useContext(AuthContext);

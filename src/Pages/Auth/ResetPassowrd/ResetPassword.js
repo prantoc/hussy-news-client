@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Alert } from 'react-bootstrap';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const ResetPassword = () => {
     const { userPassReset } = useContext(AuthContext);
