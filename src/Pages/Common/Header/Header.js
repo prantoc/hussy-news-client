@@ -37,10 +37,10 @@ const Header = () => {
                         user
                             ?
                             <Navbar.Text className='d-flex mx-auto'>
-                                <Button className='me-2' variant="danger"><FaPlus /> Advertise</Button>
+                                <Button className='me-2 py-1' variant="danger"><FaPlus /> Advertise</Button>
 
                                 <Dropdown>
-                                    <Dropdown.Toggle className='border border-1' variant="outline-light" id="dropdown-basic">
+                                    <Dropdown.Toggle className='border border-1 py-1' variant="outline-light" id="dropdown-basic">
                                         {
                                             user
                                                 ?
@@ -57,7 +57,7 @@ const Header = () => {
                             </Navbar.Text>
 
                             :
-                            <Nav>
+                            <Nav className='py-1'>
                                 <LinkContainer to="/login" >
                                     <Link className="nav-link">Login</Link>
                                 </LinkContainer>
