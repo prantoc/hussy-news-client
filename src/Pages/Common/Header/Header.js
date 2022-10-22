@@ -59,6 +59,7 @@ const Header = () => {
                                     </Dropdown.Toggle>
                                     <Dropdown.Menu className='position-absolute end-100 translate-middle-x'>
                                         <Dropdown.Item >{user?.displayName}</Dropdown.Item>
+                                        <Dropdown><Link to="/profile" data-rr-ui-dropdown-item="" className="dropdown-item" role="button" tabIndex="0">Profile</Link></Dropdown>
                                         <Dropdown.Item onClick={userLogout}>Logout</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>

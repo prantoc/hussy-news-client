@@ -3,7 +3,7 @@ import { Spinner } from 'react-bootstrap';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
 
-const PrivateRoutes = ({ children }) => {
+const VerifyEmailRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     let location = useLocation();
     if (loading) {
@@ -11,10 +11,15 @@ const PrivateRoutes = ({ children }) => {
             <span className="visually-hidden">Loading...</span>
         </Spinner>
     }
-    if (user) {
+
+    if (user && user.uid && !user.emailVerified) {
         return children;
+    } else if (user && user.uid && user.emailVerified) {
+        return <Navigate to="/"></Navigate>;
+    } else {
+
+        return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
     }
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
-export default PrivateRoutes;
+export default VerifyEmailRoute;

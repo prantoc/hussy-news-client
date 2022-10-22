@@ -8,6 +8,8 @@ import ResetPassword from "../Pages/Auth/ResetPassowrd/ResetPassword";
 import SignUp from "../Pages/Auth/SignUp/SignUp";
 import VerifyEmail from "../Pages/Auth/VerifyEmail/VerifyEmail";
 import PrivateRoutes from "./PrivateRoutes";
+import Profile from "../Pages/Profile/Profile";
+import VerifyEmailRoute from "./VerifyEmailRoute";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +33,11 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
             },
             {
+                path: "/profile",
+                element: <PrivateRoutes> <Profile></Profile> </PrivateRoutes>,
+
+            },
+            {
                 path: "/login",
                 element: <Login></Login>
             },
@@ -44,7 +51,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/verify-email",
-                element: <VerifyEmail></VerifyEmail>
+                element: <VerifyEmailRoute> <VerifyEmail></VerifyEmail></VerifyEmailRoute>
             },
         ]
     },
