@@ -41,6 +41,7 @@ const AuthProvider = ({ children }) => {
 
     //reset user password 
     const userPassReset = email => {
+        setLoading(true)
         return sendPasswordResetEmail(auth, email);
     }
 
