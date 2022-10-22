@@ -1,12 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
+    const nameRef = useRef(user.displayName);
+    const profileUpdate = e => {
+        e.preventDefault();
+        console.log(nameRef.current.value);
+    }
     return (
         <>
             <div className='col-lg-8 col-11 mx-auto border p-5 rounded' style={{ boxShadow: "rgb(204 225 255) -7px 13px 4px 1px" }}>
-                <form >
+                <form onSubmit={profileUpdate}>
                     {/* {successMgs && <Alert variant="success">
                         {successMgs}
                     </Alert>} */}
@@ -15,7 +20,7 @@ const Profile = () => {
                     </Alert>} */}
                     <div className="mb-3">
                         <label htmlFor="exampleInputName" className="form-label">Full name</label>
-                        <input type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp" name='name' required placeholder='Enter your full name' defaultValue={user?.displayName ? user?.displayName : 'no data found'} />
+                        <input type="text" className="form-control" id="exampleInputName" aria-describedby="nameHelp" name='name' required placeholder='Enter your full name' ref={nameRef} defaultValue={user?.displayName ? user?.displayName : 'no data found'} />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="exampleInputPhoto" className="form-label">Photo URL</label>
