@@ -49,7 +49,10 @@ export const router = createBrowserRouter([
                 path: "/reset-password",
                 element: <ResetPassword></ResetPassword>
             },
-
+            {
+                path: "/verify-email",
+                element: <VerifyEmailRoute> <VerifyEmail></VerifyEmail></VerifyEmailRoute>
+            },
         ]
     },
 
