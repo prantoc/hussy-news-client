@@ -19,18 +19,18 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch(`http://localhost:5000/all-news`)
+                loader: () => fetch(`https://hussy-news-server.vercel.app/all-news`)
             },
             {
                 path: "/category/:id",
                 element: <PrivateRoutes> <Category></Category> </PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://hussy-news-server.vercel.app/category/${params.id}`)
 
             },
             {
                 path: "/news/:id",
                 element: <PrivateRoutes><News></News></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({ params }) => fetch(`https://hussy-news-server.vercel.app/news/${params.id}`)
             },
             {
                 path: "/profile",

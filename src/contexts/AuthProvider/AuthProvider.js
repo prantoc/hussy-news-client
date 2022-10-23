@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     // search query result
     useEffect(() => {
         if (searchQuery) {
-            fetch(`http://localhost:5000/search/${searchQuery}`)
+            fetch(`https://hussy-news-server.vercel.app/search/${searchQuery}`)
                 .then(res => res.json())
                 .then(data => setSearchResult(data))
         }
