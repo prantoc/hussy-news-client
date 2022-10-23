@@ -7,6 +7,17 @@ const AuthProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResult, setSearchResult] = useState([]);
+
+    // search query result
+    useEffect(() => {
+        if (searchQuery) {
+            fetch(`http://localhost:5000/search/${searchQuery}`)
+                .then(res => res.json())
+                .then(data => setSearchResult(data))
+        }
+    }, [searchQuery])
 
     //signin with google
     const signInByGoogle = () => {
@@ -60,6 +71,8 @@ const AuthProvider = ({ children }) => {
         return () => un();
     }, [])
 
+
+
     //passing all of the variable and functions 
     const authInfo = {
         user,
@@ -71,6 +84,9 @@ const AuthProvider = ({ children }) => {
         userSignIn,
         userPassReset,
         setLoading,
+        setSearchQuery,
+        searchQuery,
+        searchResult,
         loading
     }
 

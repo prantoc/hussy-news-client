@@ -7,7 +7,7 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Header = () => {
-    const { user, logoutUser } = useContext(AuthContext);
+    const { user, logoutUser, setSearchQuery } = useContext(AuthContext);
     const userLogout = () => {
         logoutUser()
             .then(() => {
@@ -15,6 +15,9 @@ const Header = () => {
             }).catch((error) => {
                 console.error(error);
             });
+    }
+    const handleSearch = e => {
+        setSearchQuery(e.target.value)
     }
     return (
         <Container fluid className='shadow p-2 mb-5 bg-body rounded'>
@@ -38,6 +41,7 @@ const Header = () => {
                                 placeholder="Search"
                                 className="me-2"
                                 aria-label="Search"
+                                onChange={handleSearch}
                             />
                         </Form>
                     </Navbar.Collapse>
