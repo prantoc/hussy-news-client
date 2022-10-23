@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const LeftSideNav = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch(`https://hussy-news-server.vercel.app/news-category`)
+        fetch(`http://localhost:5000/news-category`)
             .then(res => res.json())
             .then(data => setCategories(data))
             .catch(err => console.log(err))
