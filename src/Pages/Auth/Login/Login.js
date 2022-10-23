@@ -23,7 +23,11 @@ const Login = () => {
                 setErrorMgs('');
                 setSuccessMgs(`Hi, You Logged in successfully ${user.displayName}`);
                 form.reset();
-                navigate(from, { replace: true });
+                if (user.emailVerified) {
+                    navigate(from, { replace: true });
+                } else {
+                    navigate('/verify-email')
+                }
             })
             .catch((error) => {
                 const errorMessage = error.message;

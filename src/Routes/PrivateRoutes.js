@@ -11,10 +11,15 @@ const PrivateRoutes = ({ children }) => {
             <span className="visually-hidden">Loading...</span>
         </Spinner>
     }
-    if (user) {
+    if (user && user.uid && user.emailVerified) {
         return children;
+    } else if (user && user.uid && !user.emailVerified) {
+        return <Navigate to="/verify-email"></Navigate>;
+    } else {
+
+        return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
     }
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+
 };
 
 export default PrivateRoutes;
