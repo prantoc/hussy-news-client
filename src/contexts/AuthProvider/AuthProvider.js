@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
                 .then(res => res.json())
                 .then(data => setSearchResult(data))
         }
+        setSearchResult('')
     }, [searchQuery])
 
     //signin with google
