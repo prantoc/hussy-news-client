@@ -2,9 +2,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Card, Image, } from 'react-bootstrap';
 import { FaRegBookmark, FaShareAlt, FaRegEye, FaStar } from "react-icons/fa";
+import useTitle from '../../hooks/useTitle';
 const News = () => {
     const newsDetails = useLoaderData();
     const { author, title, image_url, details, total_view, rating } = newsDetails;
+    useTitle(`${title}`)
     return (
         <>
             <Card className='mb-5 shadow border-0 bg-body rounded'>
